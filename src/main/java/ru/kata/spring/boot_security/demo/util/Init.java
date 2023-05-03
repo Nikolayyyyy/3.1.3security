@@ -1,9 +1,9 @@
 package ru.kata.spring.boot_security.demo.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
+import ru.kata.spring.boot_security.demo.service.UserDetailsServiceImpl;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.annotation.PostConstruct;
@@ -13,12 +13,13 @@ import java.util.Set;
 public class Init {
 
     private final UserService userService;
+    private final UserDetailsServiceImpl userDetailsService;
 
-
-    @Autowired
-    public Init(UserService userService) {
+    public Init(UserService userService, UserDetailsServiceImpl userDetailsService) {
         this.userService = userService;
+        this.userDetailsService = userDetailsService;
     }
+
 
     @PostConstruct
     public void initializeDB() {

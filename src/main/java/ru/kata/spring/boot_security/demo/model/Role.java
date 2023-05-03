@@ -2,7 +2,12 @@ package ru.kata.spring.boot_security.demo.model;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.*;
+import javax.persistence.GenerationType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
 import java.util.Objects;
 
 @Entity
@@ -53,6 +58,7 @@ public class Role implements GrantedAuthority {
     public String getNameRole() {
         return role.substring("ROLE_".length());
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
